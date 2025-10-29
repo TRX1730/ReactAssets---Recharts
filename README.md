@@ -1,25 +1,48 @@
+
+---
+
+# 📊 React SVG Charts
+
+A lightweight chart collection built with **pure React + SVG**, featuring Bar, Line, and Pie charts — fully customizable and dependency-free.
+
+---
+
+## 🚀 Features
+
+✅ **3 Chart Types** — Bar, Line, and Pie charts
+✅ **Custom Colors** — Fully customizable styling
+✅ **Responsive Design** — Works on all devices
+✅ **No Dependencies** — Pure SVG + CSS (no external libraries)
+✅ **Easy Data Format** — Simple array of objects
+✅ **Smooth Animations** — CSS transitions for better UX
+✅ **Interactive** — Hover effects and visual feedback
+✅ **TypeScript Ready** — Easy to add types
+
+---
+
+## 🧩 Components
+
+```
 src/
 ├── components/
 │   ├── ChartProvider.jsx
 │   ├── BarChart.jsx
 │   ├── LineChart.jsx
 │   └── PieChart.jsx
+```
 
+### Import Example
 
+```jsx
 import { ChartProvider } from './components/ChartProvider';
-
-function App() {
-  return (
-    <ChartProvider>
-      <YourApp />
-    </ChartProvider>
-  );
-}
-
-
-
 import { BarChart, LineChart, PieChart } from './components';
+```
 
+---
+
+## ⚙️ Usage Example
+
+```jsx
 function Dashboard() {
   const salesData = [
     { label: 'Jan', value: 120 },
@@ -28,105 +51,122 @@ function Dashboard() {
   ];
 
   return (
-    <div>
-      <BarChart data={salesData} title="Monthly Sales" />
-      <LineChart data={salesData} title="Sales Trend" />
-    </div>
+    <ChartProvider>
+      <BarChart data={salesData} title="Sales Performance" />
+      <LineChart data={salesData} title="Revenue Trend" />
+      <PieChart data={salesData} title="Market Share" />
+    </ChartProvider>
   );
 }
+```
 
-🎯 Features
-✅ 3 Chart Types - Bar, Line, and Pie charts
-✅ Custom Colors - Fully customizable styling
-✅ Responsive Design - Works on all devices
-✅ No Dependencies - Pure SVG + CSS (no external libraries)
-✅ Easy Data Format - Simple array of objects
-✅ Smooth Animations - CSS transitions for better UX
-✅ Interactive - Hover effects and visual feedback
-✅ TypeScript Ready - Easy to add types
+---
 
-Bar Chart
-Perfect for comparing categories and values
+## 📊 Chart Types
 
+### **Bar Chart**
 
-<BarChart 
-  data={data} 
-  title="Sales Performance"
-  options={{
-    colors: ['#3b82f6', '#ef4444', '#10b981']
-  }}
-/>
+Perfect for comparing categories and values.
 
-Line Chart
-Ideal for showing trends over time
-
-
-<LineChart 
+```jsx
+<BarChart
   data={data}
-  title="Revenue Trend" 
-  options={{
-    color: '#8b5cf6'
-  }}
+  title="Sales Performance"
+  options={{ colors: ['#3b82f6', '#ef4444', '#10b981'] }}
 />
-Pie Chart
-Great for showing proportions and percentages
+```
 
+---
 
-<PieChart 
+### **Line Chart**
+
+Ideal for showing trends over time.
+
+```jsx
+<LineChart
+  data={data}
+  title="Revenue Trend"
+  options={{ color: '#8b5cf6' }}
+/>
+```
+
+---
+
+### **Pie Chart**
+
+Great for showing proportions and percentages.
+
+```jsx
+<PieChart
   data={data}
   title="Market Share"
-  options={{
-    colors: ['#3b82f6', '#ef4444', '#10b981', '#f59e0b']
-  }}
+  options={{ colors: ['#3b82f6', '#ef4444', '#10b981', '#f59e0b'] }}
 />
+```
 
-🛠️ API Reference
-Data Format
+---
+
+## 🛠️ API Reference
+
+### **Data Format**
+
 All charts use the same simple data format:
 
-javascript
+```js
 const data = [
   { label: 'Category 1', value: 100 },
   { label: 'Category 2', value: 200 },
   { label: 'Category 3', value: 150 }
 ];
-Chart Props
-data (Array) - Chart data (required)
+```
 
-title (String) - Chart title (optional)
+### **Chart Props**
 
-options (Object) - Customization options (optional)
+| Prop      | Type   | Description                      |
+| --------- | ------ | -------------------------------- |
+| `data`    | Array  | Chart data (required)            |
+| `title`   | String | Chart title (optional)           |
+| `options` | Object | Customization options (optional) |
 
-Options
-colors (Array) - Custom colors for bars/slices
+### **Options**
 
-color (String) - Single color for line charts
+| Option   | Type   | Description                   |
+| -------- | ------ | ----------------------------- |
+| `colors` | Array  | Custom colors for bars/slices |
+| `color`  | String | Single color for line charts  |
+| `label`  | String | Dataset label                 |
 
-label (String) - Dataset label
+---
 
+## 🎨 Customization Examples
 
-🎨 Customization Examples
-Custom Colors:
+**Custom Colors:**
 
-<BarChart 
+```jsx
+<BarChart
   data={salesData}
   options={{
     colors: ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57']
   }}
 />
-Company Branding:
+```
 
-<LineChart 
+**Company Branding:**
+
+```jsx
+<LineChart
   data={revenueData}
-  options={{
-    color: '#your-brand-color'
-  }}
+  options={{ color: '#your-brand-color' }}
 />
+```
 
+---
 
+## 📈 Real-World Examples
 
-📊 Real-World Examples
-Sales Dashboard:
+### **Sales Dashboard**
+
+```jsx
 function SalesDashboard() {
   const monthlySales = [
     { label: 'Jan', value: 12000 },
@@ -143,14 +183,19 @@ function SalesDashboard() {
   ];
 
   return (
-    <div>
+    <ChartProvider>
       <BarChart data={monthlySales} title="Monthly Sales" />
-      <PieChart data={productCategories} title="Product Categories" />
-    </div>
+      <PieChart data={productCategories} title="Product Share" />
+    </ChartProvider>
   );
 }
-Analytics Dashboard:
+```
 
+---
+
+### **Analytics Dashboard**
+
+```jsx
 function AnalyticsDashboard() {
   const websiteTraffic = [
     { label: 'Mon', value: 1200 },
@@ -161,65 +206,81 @@ function AnalyticsDashboard() {
   ];
 
   return (
-    <LineChart 
-      data={websiteTraffic} 
+    <LineChart
+      data={websiteTraffic}
       title="Weekly Traffic"
       options={{ color: '#10b981' }}
     />
   );
 }
+```
 
+---
 
-🔧 Advanced Usage
-Dynamic Data from API:
+## 🔧 Advanced Usage
 
+### **Dynamic Data from API**
 
+```jsx
 function AnalyticsChart() {
   const { data: apiData, loading } = useApi('/api/analytics');
-  
-  if (loading) return <div>Loading chart data...</div>;
-  
-  return (
-    <BarChart 
-      data={apiData} 
-      title="Real-time Analytics"
-    />
-  );
+
+  if (loading) return <p>Loading chart data...</p>;
+
+  return <LineChart data={apiData} title="API Analytics" />;
 }
+```
 
+---
 
-Multiple Charts Grid:
+### **Multiple Charts Grid**
 
-<div style={{
-  display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-  gap: '20px'
-}}>
+Combine multiple charts easily:
+
+```jsx
+<ChartProvider>
   <BarChart data={salesData} title="Sales" />
-  <LineChart data={trendData} title="Trends" />
-  <PieChart data={categoryData} title="Categories" />
-</div>
+  <LineChart data={trendData} title="Revenue" />
+  <PieChart data={shareData} title="Market Share" />
+</ChartProvider>
+```
 
-🎨 Styling Tips
-Custom Container Styling:
+---
 
-<div style={{ maxWidth: '500px', margin: '0 auto' }}>
-  <BarChart data={data} title="Custom Sized Chart" />
-</div>
-Dark Theme:
+## 🎨 Styling Tips
 
-<div style={{ backgroundColor: '#1f2937', padding: '20px' }}>
-  <LineChart 
-    data={data} 
-    title="Dark Theme Chart"
-  />
-</div>
+### **Custom Container Styling**
 
-    
-📱 Mobile Responsive
-Charts automatically adjust to container size. For best mobile experience:
+```css
+.chart-container {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+```
 
+### **Dark Theme Example**
 
-<div style={{ maxWidth: '100%', overflowX: 'auto' }}>
-  <BarChart data={data} title="Mobile Friendly" />
-</div>
+```css
+.dark .chart-container {
+  background-color: #1f2937;
+  color: #f9fafb;
+}
+```
+
+---
+
+## 📱 Mobile Responsive
+
+Charts automatically adjust to container size.
+For the best mobile experience, wrap charts in responsive containers.
+
+---
+
+### 🧠 Summary
+
+* **Lightweight**: No external dependencies
+* **Customizable**: Colors, titles, animations
+* **Reusable**: Works with any data array
+* **Pure SVG**: No canvas or external libs
